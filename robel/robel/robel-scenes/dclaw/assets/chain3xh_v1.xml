@@ -1,0 +1,618 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujocoinclude>
+  <body name="dClaw" euler="3.14 0 0" childclass="dclaw3xh">
+    <geom material="acrylic" mesh="acrylic_circle"/>
+    <geom class="phy_metal" type="cylinder" size="0.075 0.004" mass=".11"/>
+    <site name="S_grasp" pos="0 0 0.24" type="sphere" size="0.01" group="4"/>
+    <!-- INDEX/FIRST FINGER -->
+    <body name="FFbase" pos=".03 -0.052 .003" euler="0 0 .52">
+      <geom mesh="xh28" pos="0 0 0.01425" euler="1.57 0 1.57"/>
+      <geom class="phy_metal" type="box" pos=".012 0 0.014" size="0.024 0.0175 0.015" mass=".093"/>
+      <body name="FF10" pos="0 0 0.01425" euler="0 0 3.14">
+        <geom mesh="metal_clamping" euler="0 0 1.57"/>
+        <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+        <geom mesh="xh28" pos="0 0 0.068" euler="1.57 1.57 0"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+        <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0125 0.0214 0.003" mass=".003"/>
+        <geom class="phy_metal" type="box" pos="0 0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 -0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+        <joint name="FFJ10" type="hinge" axis="0 1 0" range="-.45 1.35"/>
+        <body name="FFL11" pos="0 0 0.0675">
+          <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+          <geom mesh="xh28" pos="0 0 0.0686" euler="1.57 1.57 0"/>
+          <geom mesh="metal_clamping"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+          <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+          <joint name="FFJ11" type="hinge" axis="1 0 0" range="-2 2"/>
+          <body name="FFL12" pos="0 0 0.068">
+            <geom mesh="metal_clamping"/>
+            <geom material="plastic" mesh="plastic_finger" pos="0 0 0.046"/>
+            <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+            <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_plastic" type="capsule" pos="0 0 0.053" size="0.011 0.02" mass=".018" />
+            <geom class="phy_plastic" type="box" pos="0 0 0.03" size="0.0245 0.014 0.003" mass=".007"/>
+            <joint name="FFJ12" type="hinge" axis="1 0 0" range="-2 2"/>
+            <site name="FFtip" type="sphere" pos="0 0 .076" size="0.01" rgba="1 .3 .3 1"/>
+            <body name="FFarm_sensor_1_1" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_1" type="box" pos="0 .01 .004" size=".0045 .0015 .0045" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="FFarm_sensor_1_2" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_2" type="box" pos=".00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_3" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_3" type="box" pos=".01 .0 .004" size=".0045 .0015 .0045" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_4" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_4" type="box" pos=".00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_5" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_5" type="box" pos="0 -.01 .004" size=".0045 .0015 .0045" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_6" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_6" type="box" pos="-.00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_7" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_7" type="box" pos="-.01 0 .004" size=".0045 .0015 .0045" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_1_8" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_FFarm_1_8" type="box" pos="-.00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_1" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_1" type="box" pos="0 .01 .004" size=".005 .002 .005" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="FFarm_sensor_2_2" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_2" type="box" pos=".00707 .00707 .004" size=".005 .002 .005" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_3" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_3" type="box" pos=".01 .0 .004" size=".005 .002 .005" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_4" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_4" type="box" pos=".00707 -.00707 .004" size=".005 .002 .005" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_5" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_5" type="box" pos="0 -.01 .004" size=".005 .002 .005" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_6" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_6" type="box" pos="-.00707 -.00707 .004" size=".005 .002 .005" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_7" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_7" type="box" pos="-.01 0 .004" size=".005 .002 .005" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFarm_sensor_2_8" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_FFarm_2_8" type="box" pos="-.00707 .00707 .004" size=".005 .002 .005" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_1" type="box" pos="0 .00966 .002588" size=".004 .0015 .004" euler="0.2618 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_2" type="box" pos=".006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 -0.184 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_3" type="box" pos=".00966 0 .002588" size=".004 .0015 .004" euler="0 -0.2618 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_4" type="box" pos=".006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 -0.184 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_5" type="box" pos="0 -.00966 .002588" size=".004 .0015 .004" euler="-0.2618 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_6" type="box" pos="-.006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 0.184 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_7" type="box" pos="-.00966 0 .002588" size=".004 .0015 .004" euler="0 0.2618 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_up_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782" mass=".0001"/>
+              <site name="robot0:T_FFtip_up_8" type="box" pos="-.006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 0.184 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <site name="robot0:T_FFtip_down_1" type="box" pos="0 .00525 .00909" size=".003 .001 .005" euler="1.047 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <site name="robot0:T_FFtip_down_2" type="box" pos=".003712 .003712 .00909" size=".003 .001 .005" euler="0.659 -0.659 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <site name="robot0:T_FFtip_down_3" type="box" pos=".00525 0 .00909" size=".003 .001 .005" euler="0 -1.047 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <site name="robot0:T_FFtip_down_4" type="box" pos=".003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 -0.659 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <site name="robot0:T_FFtip_down_5" type="box" pos="0 -.00525 .00909" size=".003 .001 .005" euler="-1.047 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <site name="robot0:T_FFtip_down_6" type="box" pos="-.003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 0.659 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <site name="robot0:T_FFtip_down_7" type="box" pos="-.00525 0 .00909" size=".003 .001 .005" euler="0 1.047 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="FFtip_sensor_down_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <site name="robot0:T_FFtip_down_8" type="box" pos="-.003712 .003712 .00909" size=".003 .001 .005" euler="0.659 0.659 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <!-- MIDDLE FINGER -->
+    <body name="MFbase" pos=".03 0.052 .003" euler="0 0 2.6">
+      <geom mesh="xh28" pos="0 0 0.01425" euler="1.57 0 1.57"/>
+      <geom class="phy_metal" type="box" pos=".012 0 0.014" size="0.024 0.0175 0.015" mass=".093"/>
+      <body name="MF20" pos="0 0 0.01425" euler="0 0 3.14">
+        <geom mesh="metal_clamping" euler="0 0 1.57"/>
+        <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+        <geom mesh="xh28" pos="0 0 0.068" euler="1.57 1.57 0"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+        <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0125 0.0214 0.003" mass=".003"/>
+        <geom class="phy_metal" type="box" pos="0 0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 -0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+        <joint name="MFJ20" type="hinge" axis="0 1 0" range="-.45 1.35"/>
+        <body name="MFL21" pos="0 0 0.0675">
+          <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+          <geom mesh="xh28" pos="0 0 0.0686" euler="1.57 1.57 0"/>
+          <geom mesh="metal_clamping"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+          <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+          <joint name="MFJ21" type="hinge" axis="1 0 0" range="-2 2"/>
+          <body name="MFL22" pos="0 0 0.068">
+            <geom mesh="metal_clamping"/>
+            <geom material="plastic" mesh="plastic_finger" pos="0 0 0.046"/>
+            <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+            <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_plastic" type="capsule" pos="0 0 0.053" size="0.011 0.02" mass=".018"/>
+            <geom class="phy_plastic" type="box" pos="0 0 0.03" size="0.0245 0.014 0.003" mass=".007"/>
+            <joint name="MFJ22" type="hinge" axis="1 0 0" range="-2 2"/>
+            <site name="MFtip" type="sphere" pos="0 0 .076" size="0.01" rgba=".3 1 .3 1"/>
+            <body name="MFarm_sensor_1_1" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_1" type="box" pos="0 .01 .004" size=".0045 .0015 .0045" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="MFarm_sensor_1_2" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_2" type="box" pos=".00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_3" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_3" type="box" pos=".01 .0 .004" size=".0045 .0015 .0045" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_4" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_4" type="box" pos=".00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_5" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_5" type="box" pos="0 -.01 .004" size=".0045 .0015 .0045" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_6" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_6" type="box" pos="-.00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_7" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_7" type="box" pos="-.01 0 .004" size=".0045 .0015 .0045" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_1_8" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_MFarm_1_8" type="box" pos="-.00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_1" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_1" type="box" pos="0 .01 .004" size=".005 .002 .005" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="MFarm_sensor_2_2" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_2" type="box" pos=".00707 .00707 .004" size=".005 .002 .005" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_3" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_3" type="box" pos=".01 .0 .004" size=".005 .002 .005" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_4" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_4" type="box" pos=".00707 -.00707 .004" size=".005 .002 .005" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_5" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_5" type="box" pos="0 -.01 .004" size=".005 .002 .005" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_6" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_6" type="box" pos="-.00707 -.00707 .004" size=".005 .002 .005" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_7" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_7" type="box" pos="-.01 0 .004" size=".005 .002 .005" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFarm_sensor_2_8" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_MFarm_2_8" type="box" pos="-.00707 .00707 .004" size=".005 .002 .005" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_1" type="box" pos="0 .00966 .002588" size=".004 .0015 .004" euler="0.2618 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_2" type="box" pos=".006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 -0.184 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_3" type="box" pos=".00966 0 .002588" size=".004 .0015 .004" euler="0 -0.2618 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_4" type="box" pos=".006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 -0.184 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_5" type="box" pos="0 -.00966 .002588" size=".004 .0015 .004" euler="-0.2618 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_6" type="box" pos="-.006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 0.184 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_7" type="box" pos="-.00966 0 .002588" size=".004 .0015 .004" euler="0 0.2618 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_up_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782" mass=".0001"/>
+              <site name="robot0:T_MFtip_up_8" type="box" pos="-.006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 0.184 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <site name="robot0:T_MFtip_down_1" type="box" pos="0 .00525 .00909" size=".003 .001 .005" euler="1.047 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <site name="robot0:T_MFtip_down_2" type="box" pos=".003712 .003712 .00909" size=".003 .001 .005" euler="0.659 -0.659 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <site name="robot0:T_MFtip_down_3" type="box" pos=".00525 0 .00909" size=".003 .001 .005" euler="0 -1.047 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <site name="robot0:T_MFtip_down_4" type="box" pos=".003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 -0.659 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <site name="robot0:T_MFtip_down_5" type="box" pos="0 -.00525 .00909" size=".003 .001 .005" euler="-1.047 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <site name="robot0:T_MFtip_down_6" type="box" pos="-.003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 0.659 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <site name="robot0:T_MFtip_down_7" type="box" pos="-.00525 0 .00909" size=".003 .001 .005" euler="0 1.047 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="MFtip_sensor_down_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <site name="robot0:T_MFtip_down_8" type="box" pos="-.003712 .003712 .00909" size=".003 .001 .005" euler="0.659 0.659 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <!-- THUMB -->
+    <body name="THbase" pos="-.06 0 .003" euler="0 0 -1.57">
+      <geom mesh="xh28" pos="0 0 0.01425" euler="1.57 0 1.57"/>
+      <geom class="phy_metal" type="box" pos=".012 0 0.014" size="0.024 0.0175 0.015" mass=".093"/>
+      <body name="TH30" pos="0 0 0.01425" euler="0 0 3.14">
+        <geom mesh="metal_clamping" euler="0 0 1.57"/>
+        <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+        <geom mesh="xh28" pos="0 0 0.068" euler="1.57 1.57 0"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+        <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0125 0.0214 0.003" mass=".003"/>
+        <geom class="phy_metal" type="box" pos="0 0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 -0.02 0.013" size="0.011 0.0012 0.016" mass=".002"/>
+        <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+        <joint name="THJ30" type="hinge" axis="0 1 0" range="-.45 1.35"/>
+        <body name="THL31" pos="0 0 0.0675">
+          <geom mesh="metal_clamping_small" pos="0 0 0.055" euler="3.14 0 0"/>
+          <geom mesh="xh28" pos="0 0 0.0686" euler="1.57 1.57 0"/>
+          <geom mesh="metal_clamping"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.056" size="0.0175 0.015 0.024" mass=".093"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+          <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+          <geom class="phy_metal" type="box" pos="0 0 0.033" size="0.019 0.014 0.006" mass=".005"/>
+          <joint name="THJ31" type="hinge" axis="1 0 0" range="-2 2"/>
+          <body name="THL32" pos="0 0 0.068">
+            <geom mesh="metal_clamping"/>
+            <geom material="plastic" mesh="plastic_finger" pos="0 0 0.046"/>
+            <geom class="phy_metal" type="box" pos="0.0 0 0.026" size="0.0214 0.0125 0.003" mass=".003"/>
+            <geom class="phy_metal" type="box" pos="0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_metal" type="box" pos="-0.02 0 0.013" size="0.0012 0.011 0.016" mass=".002"/>
+            <geom class="phy_plastic" type="capsule" pos="0 0 0.053" size="0.011 0.02" mass=".018"/>
+            <geom class="phy_plastic" type="box" pos="0 0 0.03" size="0.0245 0.014 0.003" mass=".007"/>
+            <joint name="THJ32" type="hinge" axis="1 0 0" range="-2 2"/>
+            <site name="THtip" type="sphere" pos="0 0 .076" size="0.01" rgba=".3 .3 1 1"/>
+            <body name="TFarm_sensor_1_1" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_1" type="box" pos="0 .01 .004" size=".0045 .0015 .0045" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="TFarm_sensor_1_2" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_2" type="box" pos=".00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_3" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_3" type="box" pos=".01 .0 .004" size=".0045 .0015 .0045" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_4" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_4" type="box" pos=".00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_5" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_5" type="box" pos="0 -.01 .004" size=".0045 .0015 .0045" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_6" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_6" type="box" pos="-.00707 -.00707 .004" size=".0045 .0015 .0045" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_7" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_7" type="box" pos="-.01 0 .004" size=".0045 .0015 .0045" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_1_8" pos="0 0 0.058">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_TFarm_1_8" type="box" pos="-.00707 .00707 .004" size=".0045 .0015 .0045" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_1" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 1.1781" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_1" type="box" pos="0 .01 .004" size=".005 .002 .005" rgba="1 .3 .3 0.33"/>
+            </body>
+            <body name="TFarm_sensor_2_2" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 0.3927" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_2" type="box" pos=".00707 .00707 .004" size=".005 .002 .005" euler="0 0 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_3" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -0.3927"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -0.3927" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_3" type="box" pos=".01 .0 .004" size=".005 .002 .005" euler="0 0 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_4" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.1781"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.1781" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_4" type="box" pos=".00707 -.00707 .004" size=".005 .002 .005" euler="0 0 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_5" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 -1.9635" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_5" type="box" pos="0 -.01 .004" size=".005 .002 .005" euler="0 0 3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_6" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 -2.7489"/>
+              <geom class="phy_plastic" mesh="xh_arm_sensor" euler="0 0 -2.7489" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_6" type="box" pos="-.00707 -.00707 .004" size=".005 .002 .005" euler="0 0 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_7" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 2.7489"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" euler="0 0 2.7489" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_7" type="box" pos="-.01 0 .004" size=".005 .002 .005" euler="0 0 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFarm_sensor_2_8" pos="0 0 0.067">
+              <geom material="metal_black" mesh="xh_arm_sensor" euler="0 0 1.9635"/>
+              <geom class="phy_metal" mesh="xh_arm_sensor" mass=".0001"/>
+              <site name="robot0:T_TFarm_2_8" type="box" pos="-.00707 .00707 .004" size=".005 .002 .005" euler="0 0 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.002985 0.013165 0" euler="0 0 -1.9636" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_1" type="box" pos="0 .00966 .002588" size=".004 .0015 .004" euler="0.2618 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".007178 0.01140 0" euler="0 0 -2.749" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_2" type="box" pos=".006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 -0.184 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".01313 .00299 0" euler="0 0 2.7488" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_3" type="box" pos=".00966 0 .002588" size=".004 .0015 .004" euler="0 -0.2618 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".0114 -.007169 0" euler="0 0 1.9634" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_4" type="box" pos=".006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 -0.184 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos=".00299 -.01313 0" euler="0 0 1.178" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_5" type="box" pos="0 -.00966 .002588" size=".004 .0015 .004" euler="-0.2618 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.007162 -.01141 0" euler="0 0 0.3926" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_6" type="box" pos="-.006831 -.006831 .002588" size=".004 .0015 .004" euler="-0.184 0.184 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.01313 -.003 0" euler="0 0 -0.3928" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_7" type="box" pos="-.00966 0 .002588" size=".004 .0015 .004" euler="0 0.2618 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_up_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_up_sensor" pos="-.0114 .007169 0" euler="0 0 -1.1782" mass=".0001"/>
+              <site name="robot0:T_TFtip_up_8" type="box" pos="-.006831 .006831 .002588" size=".004 .0015 .004" euler="0.184 0.184 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_1" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.002585 0.01140 0" euler="0 0 -1.9636"/>
+              <site name="robot0:T_TFtip_down_1" type="box" pos="0 .00525 .00909" size=".003 .001 .005" euler="1.047 0 0" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_2" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".006216 .009872 0" euler="0 0 -2.749"/>
+              <site name="robot0:T_TFtip_down_2" type="box" pos=".003712 .003712 .00909" size=".003 .001 .005" euler="0.659 -0.659 -0.785" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_3" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".01138 .002589 0" euler="0 0 2.7488"/>
+              <site name="robot0:T_TFtip_down_3" type="box" pos=".00525 0 .00909" size=".003 .001 .005" euler="0 -1.047 -1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_4" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".009872 -.006209 0" euler="0 0 1.9634"/>
+              <site name="robot0:T_TFtip_down_4" type="box" pos=".003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 -0.659 -2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_5" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos=".002589 -.01138 0" euler="0 0 1.178"/>
+              <site name="robot0:T_TFtip_down_5" type="box" pos="0 -.00525 .00909" size=".003 .001 .005" euler="-1.047 0 -3.14" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_6" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.006202 -.00988 0" euler="0 0 0.3926"/>
+              <site name="robot0:T_TFtip_down_6" type="box" pos="-.003712 -.003712 .00909" size=".003 .001 .005" euler="-0.659 0.659 2.355" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_7" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.01138 -.002589 0" euler="0 0 -0.3928"/>
+              <site name="robot0:T_TFtip_down_7" type="box" pos="-.00525 0 .00909" size=".003 .001 .005" euler="0 1.047 1.57" rgba="1 .3 .3 .33"/>
+            </body>
+            <body name="TFtip_sensor_down_8" pos="0 0 0.076">
+              <geom material="metal_black" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <geom class="phy_plastic" mesh="xh_tip_down_sensor" pos="-.009872 .006209 0" euler="0 0 -1.1782"/>
+              <site name="robot0:T_TFtip_down_8" type="box" pos="-.003712 .003712 .00909" size=".003 .001 .005" euler="0.659 0.659 0.785" rgba="1 .3 .3 .33"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+</mujocoinclude>

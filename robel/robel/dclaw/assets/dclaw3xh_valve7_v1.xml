@@ -1,0 +1,140 @@
+<!--
+ ~ Copyright 2019 The ROBEL Authors.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+ -->
+
+<?xml version="1.0"?>
+<mujoco model="dclaw3xh_valve4">
+  <include file="../../robel-scenes/scenes/basic_scene.xml"/>
+  <include file="../../robel-scenes/dclaw/assets/dependencies3xh.xml"/>
+  <include file="../../robel-scenes/dclaw_stations/assets/dependencies.xml"/>
+  <compiler meshdir="../../robel-scenes/dclaw" texturedir="../../robel-scenes/dclaw"/>
+
+	<sensor>
+    <touch name="robot0:TS_FFarm_1_1" site="robot0:T_FFarm_1_1"></touch>
+    <touch name="robot0:TS_FFarm_1_2" site="robot0:T_FFarm_1_2"></touch>
+    <touch name="robot0:TS_FFarm_1_3" site="robot0:T_FFarm_1_3"></touch>
+    <touch name="robot0:TS_FFarm_1_4" site="robot0:T_FFarm_1_4"></touch>
+    <touch name="robot0:TS_FFarm_1_5" site="robot0:T_FFarm_1_5"></touch>
+    <touch name="robot0:TS_FFarm_1_6" site="robot0:T_FFarm_1_6"></touch>
+    <touch name="robot0:TS_FFarm_1_7" site="robot0:T_FFarm_1_7"></touch>
+    <touch name="robot0:TS_FFarm_1_8" site="robot0:T_FFarm_1_8"></touch>
+    <touch name="robot0:TS_FFarm_2_1" site="robot0:T_FFarm_2_1"></touch>
+    <touch name="robot0:TS_FFarm_2_2" site="robot0:T_FFarm_2_2"></touch>
+    <touch name="robot0:TS_FFarm_2_3" site="robot0:T_FFarm_2_3"></touch>
+    <touch name="robot0:TS_FFarm_2_4" site="robot0:T_FFarm_2_4"></touch>
+    <touch name="robot0:TS_FFarm_2_5" site="robot0:T_FFarm_2_5"></touch>
+    <touch name="robot0:TS_FFarm_2_6" site="robot0:T_FFarm_2_6"></touch>
+    <touch name="robot0:TS_FFarm_2_7" site="robot0:T_FFarm_2_7"></touch>
+    <touch name="robot0:TS_FFarm_2_8" site="robot0:T_FFarm_2_8"></touch>
+    <touch name="robot0:TS_FFtip_up_1" site="robot0:T_FFtip_up_1"></touch>
+    <touch name="robot0:TS_FFtip_up_2" site="robot0:T_FFtip_up_2"></touch>
+    <touch name="robot0:TS_FFtip_up_3" site="robot0:T_FFtip_up_3"></touch>
+    <touch name="robot0:TS_FFtip_up_4" site="robot0:T_FFtip_up_4"></touch>
+    <touch name="robot0:TS_FFtip_up_5" site="robot0:T_FFtip_up_5"></touch>
+    <touch name="robot0:TS_FFtip_up_6" site="robot0:T_FFtip_up_6"></touch>
+    <touch name="robot0:TS_FFtip_up_7" site="robot0:T_FFtip_up_7"></touch>
+    <touch name="robot0:TS_FFtip_up_8" site="robot0:T_FFtip_up_8"></touch>
+    <touch name="robot0:TS_FFtip_down_1" site="robot0:T_FFtip_down_1"></touch>
+    <touch name="robot0:TS_FFtip_down_2" site="robot0:T_FFtip_down_2"></touch>
+    <touch name="robot0:TS_FFtip_down_3" site="robot0:T_FFtip_down_3"></touch>
+    <touch name="robot0:TS_FFtip_down_4" site="robot0:T_FFtip_down_4"></touch>
+    <touch name="robot0:TS_FFtip_down_5" site="robot0:T_FFtip_down_5"></touch>
+    <touch name="robot0:TS_FFtip_down_6" site="robot0:T_FFtip_down_6"></touch>
+    <touch name="robot0:TS_FFtip_down_7" site="robot0:T_FFtip_down_7"></touch>
+    <touch name="robot0:TS_FFtip_down_8" site="robot0:T_FFtip_down_8"></touch>
+    <touch name="robot0:TS_MFarm_1_1" site="robot0:T_MFarm_1_1"></touch>
+    <touch name="robot0:TS_MFarm_1_2" site="robot0:T_MFarm_1_2"></touch>
+    <touch name="robot0:TS_MFarm_1_3" site="robot0:T_MFarm_1_3"></touch>
+    <touch name="robot0:TS_MFarm_1_4" site="robot0:T_MFarm_1_4"></touch>
+    <touch name="robot0:TS_MFarm_1_5" site="robot0:T_MFarm_1_5"></touch>
+    <touch name="robot0:TS_MFarm_1_6" site="robot0:T_MFarm_1_6"></touch>
+    <touch name="robot0:TS_MFarm_1_7" site="robot0:T_MFarm_1_7"></touch>
+    <touch name="robot0:TS_MFarm_1_8" site="robot0:T_MFarm_1_8"></touch>
+    <touch name="robot0:TS_MFarm_2_1" site="robot0:T_MFarm_2_1"></touch>
+    <touch name="robot0:TS_MFarm_2_2" site="robot0:T_MFarm_2_2"></touch>
+    <touch name="robot0:TS_MFarm_2_3" site="robot0:T_MFarm_2_3"></touch>
+    <touch name="robot0:TS_MFarm_2_4" site="robot0:T_MFarm_2_4"></touch>
+    <touch name="robot0:TS_MFarm_2_5" site="robot0:T_MFarm_2_5"></touch>
+    <touch name="robot0:TS_MFarm_2_6" site="robot0:T_MFarm_2_6"></touch>
+    <touch name="robot0:TS_MFarm_2_7" site="robot0:T_MFarm_2_7"></touch>
+    <touch name="robot0:TS_MFarm_2_8" site="robot0:T_MFarm_2_8"></touch>
+    <touch name="robot0:TS_MFtip_up_1" site="robot0:T_MFtip_up_1"></touch>
+    <touch name="robot0:TS_MFtip_up_2" site="robot0:T_MFtip_up_2"></touch>
+    <touch name="robot0:TS_MFtip_up_3" site="robot0:T_MFtip_up_3"></touch>
+    <touch name="robot0:TS_MFtip_up_4" site="robot0:T_MFtip_up_4"></touch>
+    <touch name="robot0:TS_MFtip_up_5" site="robot0:T_MFtip_up_5"></touch>
+    <touch name="robot0:TS_MFtip_up_6" site="robot0:T_MFtip_up_6"></touch>
+    <touch name="robot0:TS_MFtip_up_7" site="robot0:T_MFtip_up_7"></touch>
+    <touch name="robot0:TS_MFtip_up_8" site="robot0:T_MFtip_up_8"></touch>
+    <touch name="robot0:TS_MFtip_down_1" site="robot0:T_MFtip_down_1"></touch>
+    <touch name="robot0:TS_MFtip_down_2" site="robot0:T_MFtip_down_2"></touch>
+    <touch name="robot0:TS_MFtip_down_3" site="robot0:T_MFtip_down_3"></touch>
+    <touch name="robot0:TS_MFtip_down_4" site="robot0:T_MFtip_down_4"></touch>
+    <touch name="robot0:TS_MFtip_down_5" site="robot0:T_MFtip_down_5"></touch>
+    <touch name="robot0:TS_MFtip_down_6" site="robot0:T_MFtip_down_6"></touch>
+    <touch name="robot0:TS_MFtip_down_7" site="robot0:T_MFtip_down_7"></touch>
+    <touch name="robot0:TS_MFtip_down_8" site="robot0:T_MFtip_down_8"></touch>
+    <touch name="robot0:TS_TFarm_1_1" site="robot0:T_TFarm_1_1"></touch>
+    <touch name="robot0:TS_TFarm_1_2" site="robot0:T_TFarm_1_2"></touch>
+    <touch name="robot0:TS_TFarm_1_3" site="robot0:T_TFarm_1_3"></touch>
+    <touch name="robot0:TS_TFarm_1_4" site="robot0:T_TFarm_1_4"></touch>
+    <touch name="robot0:TS_TFarm_1_5" site="robot0:T_TFarm_1_5"></touch>
+    <touch name="robot0:TS_TFarm_1_6" site="robot0:T_TFarm_1_6"></touch>
+    <touch name="robot0:TS_TFarm_1_7" site="robot0:T_TFarm_1_7"></touch>
+    <touch name="robot0:TS_TFarm_1_8" site="robot0:T_TFarm_1_8"></touch>
+    <touch name="robot0:TS_TFarm_2_1" site="robot0:T_TFarm_2_1"></touch>
+    <touch name="robot0:TS_TFarm_2_2" site="robot0:T_TFarm_2_2"></touch>
+    <touch name="robot0:TS_TFarm_2_3" site="robot0:T_TFarm_2_3"></touch>
+    <touch name="robot0:TS_TFarm_2_4" site="robot0:T_TFarm_2_4"></touch>
+    <touch name="robot0:TS_TFarm_2_5" site="robot0:T_TFarm_2_5"></touch>
+    <touch name="robot0:TS_TFarm_2_6" site="robot0:T_TFarm_2_6"></touch>
+    <touch name="robot0:TS_TFarm_2_7" site="robot0:T_TFarm_2_7"></touch>
+    <touch name="robot0:TS_TFarm_2_8" site="robot0:T_TFarm_2_8"></touch>
+    <touch name="robot0:TS_TFtip_up_1" site="robot0:T_TFtip_up_1"></touch>
+    <touch name="robot0:TS_TFtip_up_2" site="robot0:T_TFtip_up_2"></touch>
+    <touch name="robot0:TS_TFtip_up_3" site="robot0:T_TFtip_up_3"></touch>
+    <touch name="robot0:TS_TFtip_up_4" site="robot0:T_TFtip_up_4"></touch>
+    <touch name="robot0:TS_TFtip_up_5" site="robot0:T_TFtip_up_5"></touch>
+    <touch name="robot0:TS_TFtip_up_6" site="robot0:T_TFtip_up_6"></touch>
+    <touch name="robot0:TS_TFtip_up_7" site="robot0:T_TFtip_up_7"></touch>
+    <touch name="robot0:TS_TFtip_up_8" site="robot0:T_TFtip_up_8"></touch>
+    <touch name="robot0:TS_TFtip_down_1" site="robot0:T_TFtip_down_1"></touch>
+    <touch name="robot0:TS_TFtip_down_2" site="robot0:T_TFtip_down_2"></touch>
+    <touch name="robot0:TS_TFtip_down_3" site="robot0:T_TFtip_down_3"></touch>
+    <touch name="robot0:TS_TFtip_down_4" site="robot0:T_TFtip_down_4"></touch>
+    <touch name="robot0:TS_TFtip_down_5" site="robot0:T_TFtip_down_5"></touch>
+    <touch name="robot0:TS_TFtip_down_6" site="robot0:T_TFtip_down_6"></touch>
+    <touch name="robot0:TS_TFtip_down_7" site="robot0:T_TFtip_down_7"></touch>
+    <touch name="robot0:TS_TFtip_down_8" site="robot0:T_TFtip_down_8"></touch>
+	</sensor>
+
+
+  <worldbody>
+    <camera name="targeting" pos="1 1 2" mode="targetbodycom" target="dClaw"/>
+    <camera name="object_target" pos="0 0 0.33" mode="targetbody" target="object"/>
+    <body name="mount" pos="0 0 .335" euler="0 0 0">
+      <geom name="mount" type="cylinder" size="0.03 0.005" rgba=".7 .7 .7 1"/>
+      <include file="../../robel-scenes/dclaw/assets/chain3xh_v1.xml"/>
+      <include file="../../robel-scenes/dclaw/assets/chain3xh_overlay.xml"/>
+    </body>
+    <body name="object" pos="0 0 0.0151">
+      <include file="../../robel-scenes/dclaw_stations/assets/valve7.xml"/>
+    </body>
+    <body name="target" pos="0 0 0">
+      <site name="tmark" type="capsule" size=".003 0.04" pos=".04 0 0" rgba="0 1 0 1" euler="0 1.57 0"/>
+    </body>
+  </worldbody>
+  
+</mujoco>

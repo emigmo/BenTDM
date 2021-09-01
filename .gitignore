@@ -1,0 +1,36 @@
+Trifinger/__pycache__/
+Trifinger/*.py[cod]
+
+Trifinger/*.egg-info/
+Trifinger/*.egg
+Trifinger/*.DS_Store
+Trifinger/dist/
+
+Trifinger/tutorials/*
+Trifinger/docs/*
+Trifinger/scripts/*
+
+
+# General
+robel/.DS_Store
+robel/*.swp
+robel/*.profraw
+
+# Python
+robel/__pycache__
+robel/*.py[cod]
+robel/*$py.class
+robel/build
+robel/dist
+
+# Tooling output
+robel/pytype_output
+robel/*.egg-info
+robel/.ipynb_checkpoints
+robel/MUJOCO_LOG.TXT
+robel/.pytype
+
+
+# Editors
+robel/.vscode
+robel/.idea
